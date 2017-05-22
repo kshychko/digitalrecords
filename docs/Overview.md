@@ -1,0 +1,13 @@
+# Overview
+
+In line with government shared services consolidation strategy, the Department of Finance identified records management as potential target for a whole of government single solution.  A detailed survey of commonwealth agencies revealed that the commonwealth currently registers about 230 million new records per year and holds about 1 Petabyte of digital records.
+
+A user research report that assessed records management solutions across 36 agencies found an unprecedented 80% dissatisfaction rate.  The root cause is that records management practices impose significant burdens on users who must “do my job” and then “manage my records” in addition.   The consequence is very high dissatisfaction, business inefficiency, and a very high leakage rate (i.e. records that are never registered in agency records management systems at all).  Furthermore, the current manual disposal processes cannot cope with the volume of digital records and so unwanted data is accumulating fast.
+
+There is an opportunity to leverage automation and machine learning technology to allow users to “just do my job” with records management activities being automated in the background.  Machine learning is not a new technology (think email spam filters) but has not yet been applied to the realm of traditional record keeping.  This project will deliver a smart “records management as a service” central system that can be used by all agencies to automate their records management obligations.  At the same time the system will dramatically improve the discovery and re-use of information assets through big-data search indexes and linked-data ontologies.
+
+For records to be managed in the background through automated processes, all business systems that generate records must be integrated with the records management platform.  Although a few common office automation and email platform will cover the majority of unstructured records sources, there is a long tail of 100’s of systems used within government that must eventually be integrated.  Rather than attempt to build and maintain integration “plugins” for hundreds of systems, this project will promote and develop a “plugin marketplace” where application vendors and integration service providers can compete to deliver commercial solutions to the integration problem.
+
+The core platform itself will be developed as an open source solution and will deliver a rich but simple suite of well documented micro-service APIs (application programming interfaces) which represent the “integration surface” to which plugin providers will connect.  
+
+The project will be delivered in accordance with the DTA Digital Service Standard using an agile, iterative approach.  
