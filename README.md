@@ -3,7 +3,7 @@
 
 ## Overview
 
-* **One page project overview**
+* **[Project overview](/docs/Overview.md)**
 * **[Goals and Measures](/docs/GoalsAndMeasures.md)**
 * **[Glossary](/docs/Glossary.md)**
 * **[Supporting Documents](docs/references/references.md)**
