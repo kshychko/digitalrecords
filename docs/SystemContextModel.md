@@ -1,6 +1,6 @@
 # System Context Model
 
-![Context Model](docs/SolutionArchitecture.png)
+![Context Model](SolutionArchitecture.png)
 
 ## Agency – Business System
 
