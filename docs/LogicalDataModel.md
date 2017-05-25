@@ -40,46 +40,54 @@ In accordance with [AGrkms metadata set](http://www.naa.gov.au/information-manag
 
 ```
 {
-"Record":{
-  "Identifier:"austrac.gov.au:1293847563",
-  "Version":"current",
-  "Owner":"austrac.gov.au",
-  "DateCreated":"2017-03-18T12:12:00",
-  "DateUpdated":"2017-05-22T09:34:00",
-  "Classification":"UNCLASSIFIED",
-  "DLM":"Sensitive:Personal",
-  "Type":"document"
-  "Title":"OMG Transactions 2016",
-  "Author":"Bob Smith",
-  "Description":"Some cool clickbait here",
-  "MIMEType":"application/msword",
-  "Size":"249844",
-  "Language":"EN",
-  "Rights":"Not For Release",
-  "RecordsAuthority":"GDA21",
-  "DisposalAction":"Retain permanently"
-  "Keywords":["motorcycle", "money laundering", "financial"],
-  "Hash":"12209cbc07c3f991725836a3aa2a581ca2029198aa420b9d99bc0e131d9f3e2cbe47",
-  "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563
-  "versions":[{
-      "version:"2",
-      "tag":"final draft",
-      "Date":"2017-05-09T02:42:00",
-      "Hash":"569be5f10d248e62dd1c8c82d0e3a19e37452f4280b685d35d158",
-      "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563/versions/2"}
+  "Record":{
+    "Identifier":"austrac.gov.au:1293847563",
+    "Version":"current",
+    "Owner":"austrac.gov.au",
+    "DateCreated":"2017-03-18T12:12:00",
+    "DateUpdated":"2017-05-22T09:34:00",
+    "Classification":"UNCLASSIFIED",
+    "DLM":"Sensitive:Personal",
+    "Type":"document",
+    "Title":"OMG Transactions 2016",
+    "Author":"Bob Smith",
+    "Description":"Some cool clickbait here",
+    "MIMEType":"application/msword",
+    "Size":"249844",
+    "Language":"EN",
+    "Rights":"Not For Release",
+    "RecordsAuthority":"GDA21",
+    "DisposalAction":"Retain permanently",
+    "Keywords":[
+      "motorcycle",
+      "money laundering",
+      "financial"
+    ],
+    "Hash":"12209cbc07c3f991725836a3aa2a581ca2029198aa420b9d99bc0e131d9f3e2cbe47",
+    "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563",
+    "versions":[
       {
-      "version:"1",
-      "tag":"first draft",
-      "Date":"2017-03-18T12:12:00",
-      "Hash":"569be5f10d248e62288438e77d83900a0c00b985d3973bb4",
-      "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563/versions/1"}
-      ]
-   }
- }
+        "version":"2",
+        "tag":"final draft",
+        "Date":"2017-05-09T02:42:00",
+        "Hash":"569be5f10d248e62dd1c8c82d0e3a19e37452f4280b685d35d158",
+        "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563/versions/2"
+      },
+      {
+        "version":"1",
+        "tag":"first draft",
+        "Date":"2017-03-18T12:12:00",
+        "Hash":"569be5f10d248e62288438e77d83900a0c00b985d3973bb4",
+        "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563/versions/1"
+      }
+    ]
+  }
+}
   ```
 
 ## Relationship Resource
 
+```
 {
 "Relationship":{
    "Type":"ShareContext",
@@ -89,38 +97,48 @@ In accordance with [AGrkms metadata set](http://www.naa.gov.au/information-manag
    "createdBy":"bill.bailey@afp.gov.au"
    }
 }
+```
 
 ## Usage in the search & sharing protocol
 
 A search request would return a records collection each with a minimal set of metadata like:
 
 ```
-"Record":{
-  "Identifier:"austrac.gov.au:1293847563",
-  "Owner":"austrac.gov.au",
-  "DateUpdated":"2017-05-22T09:34:00",
-  "Type":"document"
-  "Title":"OMG Transactions 2016",
-  "Description":"Some cool clickbait here"
-  "Hash":"12209cbc07c3f991725836a3aa2a581ca2029198aa420b9d99bc0e131d9f3e2cbe47",
-  "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563
+{
+  "Record":{
+    "Identifier":"austrac.gov.au:1293847563",
+    "Owner":"austrac.gov.au",
+    "DateUpdated":"2017-05-22T09:34:00",
+    "Type":"document",
+    "Title":"OMG Transactions 2016",
+    "Description":"Some cool clickbait here",
+    "Hash":"12209cbc07c3f991725836a3aa2a581ca2029198aa420b9d99bc0e131d9f3e2cbe47",
+    "Location":"https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563"
   }
+}
   ```
   
   That could be returned in a collection from a search query like
   
-  GET /records?owner=austrac.gov.au&keyword=motorcycle
+  `GET /records?owner=austrac.gov.au&keyword=motorcycle`
   
   When the user clicks on the links, he'she is essentailly doing a GET on the specific record like this
   
-  GET https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563
+  `GET https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563`
   
   Lets assume that the provider agency has some rules that specific mnimum request parameters that are needed provider the actual record.  So this request doesnt get the actual record but instead gets a list of required parameters like
   
-  {"Conditions":["userID","recordID"]}
+  ```
+{
+  "Conditions":[
+    "userID",
+    "recordID"
+  ]
+}
+```
+
+  That is essentially saying "I'll give you the record but you ahve to tell me your recordID and your userID".  This drives the interstitial pop-up form.  The requesting user (manually or via integration with the local information system), preovides the data and sends a new GET request of the form:
   
-  That is essentially saying "i'll give you the record but you ahve to tell me your recordID and your userID".  This drives the interstitial pop-up form.  The requesting user (manually or via integration with the local information system), preovides the data and sends a new GET request of the form:
-  
-GET https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563?userID=bill.bailey@afp.gov.au&recordID=afp.gov.au:RR234/293484
+`GET https://lifecycle.api.digitalrecords.gov.au/v1/records/austrac.gov.au:1293847563?userID=bill.bailey@afp.gov.au&recordID=afp.gov.au:RR234/293484`
    
 This GET request now meets the conditions of the provider and so the full record resurce is provided 
